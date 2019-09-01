@@ -10,12 +10,11 @@ class App extends Component {
         contacts: []
     }
 
-    componentDidMount() {
-
-    }
+    // componentDidMount() {
+    //
+    // }
 
     render() {
-
         return (
             <Row>
                 <div align='center'>
@@ -25,10 +24,9 @@ class App extends Component {
                 </div>
             </Row>
 
-            // <Row>
-            //     <Button color="danger"> Single Player </Button>
-            //     <Button color="danger"> Multi Player </Button>
-            // </Row>
+            <Row>
+                <Button color="primary">primary</Button>
+            </Row>
         );
     }
 }
