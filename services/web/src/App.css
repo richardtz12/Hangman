@@ -23,6 +23,16 @@
   color: #61dafb;
 }
 
+.header {
+    font-size: 35px;
+    text-align: center;
+}
+
+.button-align {
+    text-align: center;
+
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

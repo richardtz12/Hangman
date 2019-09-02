@@ -1,37 +1,33 @@
 import React, { Component } from 'react';
+import { Row, Container, Col, Button } from 'reactstrap';
+
 import './App.css';
-import {
-  Container, Row, Col, Navbar, NavbarBrand, Nav, NavItem, NavLink, Card, CardBody, CardTitle, CardSubtitle, CardText, Button
-} from 'reactstrap';
+
+// import SingleName from './SingleName';
 
 
-class App extends Component {
-    state = {
-        contacts: []
-    }
-
-    componentDidMount() {
-
-    }
-
+export default class App extends Component {
     render() {
-
         return (
-            <Row>
-                <div align='center'>
-                    <h1>
-                        Welcome to HangMan
-                    </h1>
-                </div>
-            </Row>
+          <Container>
+              <Row>
+                  <div className='header'>
+                      <h1> Hangman App </h1>
+                  </div>
+              </Row>
 
-            // <Row>
-            //     <Button color="danger"> Single Player </Button>
-            //     <Button color="danger"> Multi Player </Button>
-            // </Row>
+              <Row>
+                  <div className='button-align'>
+                      <Button color="primary" size="lg"> Single Player </Button>
+                  </div>
+              </Row>
+
+              <Row>
+                  <div className='button-align'>
+                      <Button color="primary" size="lg"> Multi Player </Button>
+                  </div>
+              </Row>
+          </Container>
         );
     }
 }
-
-
-export default App;
