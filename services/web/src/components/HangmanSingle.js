@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Row, Container, Col } from 'reactstrap';
 
-import './HangmanSingle.css';
+import '../css/HangmanSingle.css';
 
 class HangmanSingle extends PureComponent {
     constructor() {

@@ -1,13 +1,33 @@
-<<<<<<< HEAD
 import React, { Component } from 'react';
 import { Row, Container, Col, Button } from 'reactstrap';
 
 import './App.css';
 
-// import SingleName from './SingleName';
-
+import SingleName from './components/SingleName';
 
 export default class App extends Component {
+
+    constructor() {
+        super();
+
+        this.state = {
+            isSinglePlayer: false,
+            isLogin: true,
+            playerOne: '',
+            platerTwo: '',
+        }
+    }
+
+    singlePlayer = () => {
+
+        console.log("Single Player Button ...");
+
+        this.setState({
+                        isSinglePlayer: true,
+                        isLogin: false,
+                     });
+    }
+
     render() {
         return (
           <Container>
@@ -19,7 +39,7 @@ export default class App extends Component {
 
               <Row>
                   <div className='button-align'>
-                      <Button color="primary" size="lg"> Single Player </Button>
+                      <Button color="primary" size="lg" onClick={this.singlePlayer}> Single Player </Button>
                   </div>
               </Row>
 
@@ -28,35 +48,13 @@ export default class App extends Component {
                       <Button color="primary" size="lg"> Multi Player </Button>
                   </div>
               </Row>
+                    {this.state.isSinglePlayer ? <SingleName /> : '' }
+              <Row>
+
+              </Row>
+
+
           </Container>
         );
     }
 }
-=======
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
->>>>>>> 2b994c5b079e2d43aab95f744d123aa463275afb
