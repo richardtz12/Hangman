@@ -10,7 +10,7 @@ export default class SingleName extends Component {
                 <Form>
                     <FormGroup>
                         <Label for="player_one"> Player 1 </Label>
-                        <Input name="player_one" id="player_one" placeholder="Enter Name" />
+                        <Input name="player_one" id="player_one" placeholder="Enter Name" onSubmit={(vals) => console.log(vals)} />
                     </FormGroup>
 
                     <Button> Submit </Button>

@@ -4,6 +4,7 @@ import { Row, Container, Col, Button } from 'reactstrap';
 import './App.css';
 
 import SingleName from './components/SingleName';
+import HangmanSingle from './components/HangmanSingle';
 
 export default class App extends Component {
 
@@ -18,10 +19,27 @@ export default class App extends Component {
         }
     }
 
+    // Basic Buttons for Login Page
+    loginPage = () => {
+        return (
+            <Container>
+                <Row>
+                    <div className='button-align'>
+                        <Button color="primary" size="lg" onClick={this.singlePlayer}> Single Player </Button>
+                    </div>
+                </Row>
+
+                <Row>
+                    <div className='button-align'>
+                        <Button color="primary" size="lg"> Multi Player </Button>
+                    </div>
+                </Row>
+            </Container>
+        );
+    }
+
+    // Single Player
     singlePlayer = () => {
-
-        console.log("Single Player Button ...");
-
         this.setState({
                         isSinglePlayer: true,
                         isLogin: false,
@@ -37,20 +55,10 @@ export default class App extends Component {
                   </div>
               </Row>
 
-              <Row>
-                  <div className='button-align'>
-                      <Button color="primary" size="lg" onClick={this.singlePlayer}> Single Player </Button>
-                  </div>
-              </Row>
+              { this.state.isLogin ? this.loginPage() : '' }
 
               <Row>
-                  <div className='button-align'>
-                      <Button color="primary" size="lg"> Multi Player </Button>
-                  </div>
-              </Row>
-                    {this.state.isSinglePlayer ? <SingleName /> : '' }
-              <Row>
-
+                 { this.state.isSinglePlayer ? <SingleName /> : '' }
               </Row>
 
 
