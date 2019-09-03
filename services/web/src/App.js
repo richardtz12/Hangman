@@ -21,6 +21,10 @@ export default class App extends Component {
         }
     }
 
+    handleChange = event => {
+        this.setState({ playerOne: event.target.value })
+    };
+
     // Basic Buttons for Login Page
     loginPage = () => {
         return (
@@ -56,7 +60,12 @@ export default class App extends Component {
                <Form>
                    <FormGroup>
                        <Label for="player_one"> Player 1 </Label>
-                       <Input name="player_one" id="player_one" placeholder="Enter Name"/>
+                       <Input
+                            name="player_one"
+                            id="player_one"
+                            onChange={this.handleChange}
+                            placeholder="Enter Name"
+                        />
                    </FormGroup>
 
                    <Button onClick={this.hangmanSingle}> Submit </Button>
@@ -73,6 +82,12 @@ export default class App extends Component {
                      })
     }
 
+    populateIntroSingle = () => {
+        return (
+                <h2> Welcome to Hangman {this.state.playerOne} ! </h2>
+        );
+    }
+
     render() {
         return (
           <div className='center'>
@@ -84,7 +99,7 @@ export default class App extends Component {
                   </Row>
 
                   <Row>
-                    <div class='login-center'>
+                    <div className='login-center'>
                         { this.state.isLogin ? this.loginPage() : '' }
                     </div>
                   </Row>
@@ -94,6 +109,7 @@ export default class App extends Component {
                   </Row>
 
                   <Row>
+                    { this.state.isHangmanSingle ? this.populateIntroSingle() : '' }
                     { this.state.isHangmanSingle ? <HangmanSingle /> : ''}
                   </Row>
              </Container>
