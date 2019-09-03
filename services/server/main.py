@@ -1,6 +1,8 @@
 from flask import Flask
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 from api.test.routes import main_mod
 app.register_blueprint(main_mod, url_prefix='/v1/')

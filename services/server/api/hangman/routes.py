@@ -14,9 +14,12 @@ def get_word():
     i = random.randint(0, len(valid_words))
 
     global chosen_word
-    chosen_word= valid_words[i]
+    chosen_word = valid_words[i]
 
-    return jsonify({'word': valid_words[i]})
+    return jsonify({
+                    'word': valid_words[i],
+                    'word_arr': list(valid_words[i]),
+                   })
 
 
 # Checks the letter chosen against the word

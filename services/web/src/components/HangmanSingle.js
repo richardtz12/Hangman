@@ -3,10 +3,27 @@ import { Row, Container, Col, Button, ButtonGroup } from 'reactstrap';
 
 import '../css/HangmanSingle.css';
 
+// Used for Get Requests from Server
+import axios from 'axios';
+
+
+var url="http://0.0.0.0:5000/hangman/get_word"
+
+// this.setState({ refresh: true }, () => {
+//   axios.get(url, { params })
+//     .then((res) => {
+//       this.setState({
+//         tickerList: res.data.tickerList,
+//         refresh: false,
+//       });
+//     });
+// });
+
 var numWrong = 0
 var numRight = 0
-var word = "jasono"
-var wordArray = ["j", "a", "s", "o", "n", "o"]
+
+// var word = "jasono"
+// var wordArray = ["j", "a", "s", "o", "n", "o"]
 
 export default class HangmanSingle extends Component {
     constructor() {
@@ -14,6 +31,8 @@ export default class HangmanSingle extends Component {
 
         this.state = {
             lettersVisible: false,
+            word: '',
+            wordArr: [],
         };
     }
 
@@ -33,12 +52,19 @@ export default class HangmanSingle extends Component {
 
 
     renderHangman = () =>  {
-        this.setState({
+        axios.get(url, {})
+             .then((res) => {
+                    this.setState({
                         lettersVisible: true,
-                      })
-        var x = word.length;
+                        word: res.data.word,
+                        wordArr: res.data.word_arr,
+                    });
+                    console.log(this.state);
+              });
+
+        var x = this.state.word.length;
         for (var i = 1; i < x + 1; i++) {
-            document.getElementById('letter'+ i).innerHTML = word[i - 1];
+            document.getElementById('letter'+ i).innerHTML = this.state.word[i - 1];
             document.getElementById('letter'+ i).style.visibility = "hidden";
             document.getElementById('underline'+i).style.display = "block";
             document.getElementById('underline'+i).style.borderBottom = "3px solid black";
@@ -101,19 +127,19 @@ export default class HangmanSingle extends Component {
             ctx.stroke();
 }
 
-    disableButton(event) {
+    disableButton = (event) => {
         console.log(event)
         document.getElementById(event.target.value).disabled = true;
         var ctx = document.getElementById("hangMan").getContext('2d');
         var bool = true
-        for (var i = 0; i < wordArray.length; i++) {
-            if (wordArray[i] == event.target.value) {
+        for (var i = 0; i < this.state.wordArr.length; i++) {
+            if (this.state.wordArr[i] == event.target.value) {
                 (document.getElementById('letter' + (i + 1))).style.visibility = "visible"
                 bool = false
                 numRight = numRight + 1
             }
         }
-        if (numRight == wordArray.length) {
+        if (numRight == this.state.wordArr.length) {
             alert("Congratulations! You got the word!")
         }
         if (bool) {
@@ -292,7 +318,7 @@ export default class HangmanSingle extends Component {
                         <p id="categoryName"></p>
                         <div id="wordWrap">
 
-                            {this.state.lettersVisible ? this.populateLetters() : <Button id="Start" onClick = {this.renderHangman} >Start</Button>}
+                            {this.state.lettersVisible ? this.populateLetters() : <Button id="Start" onClick = {this.renderHangman}> Start </Button>}
                         </div>
                     </div>
                 </Row>
