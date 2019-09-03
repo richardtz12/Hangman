@@ -3,17 +3,32 @@ import { Row, Container, Col, Button, Form, FormGroup, Label, Input, Table } fro
 
 import '../App.css';
 
+// Used for Get Requests from Server
+import axios from 'axios';
+
 export default class ScoreBoard extends Component {
     constructor() {
         super();
         this.state = {
+            values_arr: [],
         }
     }
 
     // Helper function that populates the table
-    // populateTable = () => {
-    //
-    // }
+    populateTable = () => {
+        axios.get("http://0.0.0.0:5000/hangman/get_scoreboard", {})
+             .then((res) => {
+                 return (
+                     Object.keys(res.data.values).map((item) => (
+                         <tr>
+                             <td> { item } </td>
+                             <td> { item.win_count } </td>
+                             <td> { item.loss_count } </td>
+                         </tr>
+                     ))
+                 );
+              });
+    }
 
     render() {
         return (
@@ -37,6 +52,7 @@ export default class ScoreBoard extends Component {
                                 <td> 0 </td>
                                 <td> 0 </td>
                             </tr>
+                            { this.populateTable()}
                         </tbody>
                     </Table>
                 </Row>

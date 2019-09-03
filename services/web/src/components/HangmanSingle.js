@@ -3,6 +3,8 @@ import { Row, Container, Col, Button, ButtonGroup } from 'reactstrap';
 
 import '../App.css';
 
+import PropTypes from 'prop-types';
+
 // Used for Get Requests from Server
 import axios from 'axios';
 
@@ -23,8 +25,13 @@ var numWrong = 0
 var numRight = 0
 
 export default class HangmanSingle extends Component {
-    constructor() {
-        super();
+
+    static propTypes = {
+        playerOne: PropTypes.string.isRequired,
+    };
+
+    constructor(props) {
+        super(props);
 
         this.state = {
             lettersVisible: false,
@@ -122,10 +129,9 @@ export default class HangmanSingle extends Component {
             }
         }
         if (numRight == this.state.wordArr.length) {
-            alert("Congratulations! You got the word!")
 
             var params = {
-                            'playerName': this.state.playerOne,
+                            'playerName': this.props.playerOne,
                             'status': 'win',
                          }
 
@@ -133,6 +139,10 @@ export default class HangmanSingle extends Component {
                  .then((res) => {
                         console.log(res.data.status);
                   });
+
+            alert("Congratulations! You got the word!")
+
+
         }
         if (bool) {
             numWrong = numWrong + 1
@@ -190,6 +200,17 @@ export default class HangmanSingle extends Component {
                 ctx.moveTo(151,188);
                 ctx.lineTo(120,230);
                 ctx.stroke();
+
+                var params = {
+                                'playerName': this.props.playerOne,
+                                'status': 'lost',
+                             }
+
+                axios.get("http://0.0.0.0:5000/hangman/log_result", { params })
+                     .then((res) => {
+                            console.log(res.data.status);
+                      });
+
                 alert("You have Lost! Try again next time!")
         }
     }

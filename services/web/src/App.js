@@ -19,7 +19,6 @@ export default class App extends Component {
             isHangmanSingle: false,
             isScoreBoard: false,
             playerOne: '',
-            platerTwo: '',
         }
     }
 
@@ -155,7 +154,7 @@ export default class App extends Component {
 
                   <Row>
                     { this.state.isHangmanSingle ? this.populateIntroSingle() : '' }
-                    { this.state.isHangmanSingle ? <HangmanSingle /> : ''}
+                    { this.state.isHangmanSingle ? <HangmanSingle playerOne = {this.state.playerOne} /> : ''}
                     { this.state.isHangmanSingle ? this.populateBackButton() : ''}
                   </Row>
 
