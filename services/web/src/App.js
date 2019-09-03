@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Container, Col, Button } from 'reactstrap';
 
+import PropTypes from 'prop-types';
+
 import './App.css';
 
 import SingleName from './components/SingleName';
