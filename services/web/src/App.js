@@ -49,16 +49,17 @@ export default class App extends Component {
     render() {
         return (
           <Container>
+              <HangmanSingle/> 
               <Row>
                   <div className='header'>
-                      <h1> Hangman App </h1>
+                      <h1> Hangman App</h1>
                   </div>
               </Row>
 
-              { this.state.isLogin ? this.loginPage() : '' }
+              {/* { this.state.isLogin ? this.loginPage() : '' } */}
 
               <Row>
-                 { this.state.isSinglePlayer ? <SingleName /> : '' }
+                 {/* { this.state.isSinglePlayer ? <SingleName /> : '' } */}
               </Row>
 
 
