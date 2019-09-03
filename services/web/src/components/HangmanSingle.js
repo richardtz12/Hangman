@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Container, Col, Button, ButtonGroup } from 'reactstrap';
 
-import '../css/HangmanSingle.css';
+// import '../css/HangmanSingle.css';
 
 // Used for Get Requests from Server
 import axios from 'axios';
@@ -22,9 +22,6 @@ var url="http://0.0.0.0:5000/hangman/get_word"
 var numWrong = 0
 var numRight = 0
 
-// var word = "jasono"
-// var wordArray = ["j", "a", "s", "o", "n", "o"]
-
 export default class HangmanSingle extends Component {
     constructor() {
         super();
@@ -35,21 +32,6 @@ export default class HangmanSingle extends Component {
             wordArr: [],
         };
     }
-
-    // populateLetters = () => {
-    //     var alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
-    //                     'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
-    //                     'W', 'X', 'Y', 'Z'];
-
-    //     var alphabetList = alphabet.map(function(apb) {
-    //                                     return (<Button>{apb}</Button>);
-    //                                 });
-
-    //     console.log(alphabetList);
-
-    //     // return alphabetList
-    // }
-
 
     renderHangman = () =>  {
         axios.get(url, {})
@@ -141,6 +123,16 @@ export default class HangmanSingle extends Component {
         }
         if (numRight == this.state.wordArr.length) {
             alert("Congratulations! You got the word!")
+
+            var params = {
+                            'playerName': this.state.playerOne,
+                            'status': 'win',
+                         }
+
+            axios.get("http://0.0.0.0:5000/hangman/log_result", { params })
+                 .then((res) => {
+                        console.log(res.data.status);
+                  });
         }
         if (bool) {
             numWrong = numWrong + 1
@@ -313,12 +305,16 @@ export default class HangmanSingle extends Component {
                     </div>
                 </Row>
 
+                <br />
+                <br />
+                <br />
+
                 <Row>
                     <div id="gamePage">
                         <p id="categoryName"></p>
                         <div id="wordWrap">
-
-                            {this.state.lettersVisible ? this.populateLetters() : <Button id="Start" onClick = {this.renderHangman}> Start </Button>}
+                            <br />
+                            {this.state.lettersVisible ? this.populateLetters() : <Button id="Start" color="primary" size="lg" onClick = {this.renderHangman}> Start </Button>}
                         </div>
                     </div>
                 </Row>

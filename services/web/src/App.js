@@ -91,7 +91,7 @@ export default class App extends Component {
     render() {
         return (
           <div className='center'>
-              <Container>
+              <Container xs={12} m={12}>
                   <Row>
                       <div className='header'>
                           <h1> Hangman App</h1>
