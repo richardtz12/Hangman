@@ -49,72 +49,73 @@ export default class HangmanSingle extends Component {
                         wordArr: res.data.word_arr,
                     });
                     console.log(this.state);
+              })
+              .then(() => {
+                  var x = this.state.word.length;
+                  for (var i = 1; i < x + 1; i++) {
+                      document.getElementById('letter'+ i).innerHTML = this.state.word[i - 1];
+                      document.getElementById('letter'+ i).style.visibility = "hidden";
+                      document.getElementById('underline'+i).style.display = "block";
+                      document.getElementById('underline'+i).style.borderBottom = "3px solid black";
+                  }
+                  var ctx = document.getElementById("hangMan").getContext('2d');
+                  ctx.fillStyle = "white";
+                  ctx.lineWidth=3;
+                  ctx.fillRect(0, 0, 300, 300);
+                  ctx.beginPath(); //vertical bar
+                      ctx.moveTo(50,270);
+                      ctx.lineTo(50,25);
+                      ctx.stroke();
+                  ctx.beginPath(); //vertical bar long piece
+                      ctx.moveTo(65,270);
+                      ctx.lineTo(65,85);
+                      ctx.stroke();
+                  ctx.beginPath(); //vertical bar short piece
+                      ctx.moveTo(65,64);
+                      ctx.lineTo(65,40);
+                      ctx.stroke();
+                  ctx.beginPath(); //horizontal bar
+                      ctx.moveTo(49,25);
+                      ctx.lineTo(175,25);
+                      ctx.stroke();
+                  ctx.beginPath(); //horizontal bar short piece
+                      ctx.moveTo(49,40);
+                      ctx.lineTo(86,40);
+                      ctx.stroke();
+                  ctx.beginPath(); //horizontal bar long piece
+                      ctx.moveTo(106,40);
+                      ctx.lineTo(175,40);
+                      ctx.stroke();
+                  ctx.beginPath(); //small vertical bar
+                      ctx.moveTo(173,25);
+                      ctx.lineTo(173,40);
+                      ctx.stroke();
+                  ctx.beginPath(); //cross bar
+                      ctx.moveTo(50,80);
+                      ctx.lineTo(100,25);
+                      ctx.stroke();
+                  ctx.beginPath(); //cross bar
+                      ctx.moveTo(60,90);
+                      ctx.lineTo(111,35);
+                      ctx.stroke();
+                  ctx.beginPath(); //cross bar
+                      ctx.moveTo(50,80);
+                      ctx.lineTo(60,90);
+                      ctx.stroke();
+                  ctx.beginPath(); //cross bar
+                      ctx.moveTo(100,25);
+                      ctx.lineTo(111,35);
+                      ctx.stroke();
+                  ctx.beginPath(); //ground
+                      ctx.moveTo(35,270);
+                      ctx.lineTo(265,270);
+                      ctx.stroke();
+                  ctx.beginPath(); //noose
+                      ctx.moveTo(150,40);
+                      ctx.lineTo(150,80);
+                      ctx.stroke();
               });
-
-        var x = this.state.word.length;
-        for (var i = 1; i < x + 1; i++) {
-            document.getElementById('letter'+ i).innerHTML = this.state.word[i - 1];
-            document.getElementById('letter'+ i).style.visibility = "hidden";
-            document.getElementById('underline'+i).style.display = "block";
-            document.getElementById('underline'+i).style.borderBottom = "3px solid black";
-        }
-        var ctx = document.getElementById("hangMan").getContext('2d');
-        ctx.fillStyle = "white";
-        ctx.lineWidth=3;
-        ctx.fillRect(0, 0, 300, 300);
-        ctx.beginPath(); //vertical bar
-            ctx.moveTo(50,270);
-            ctx.lineTo(50,25);
-            ctx.stroke();
-        ctx.beginPath(); //vertical bar long piece
-            ctx.moveTo(65,270);
-            ctx.lineTo(65,85);
-            ctx.stroke();
-        ctx.beginPath(); //vertical bar short piece
-            ctx.moveTo(65,64);
-            ctx.lineTo(65,40);
-            ctx.stroke();
-        ctx.beginPath(); //horizontal bar
-            ctx.moveTo(49,25);
-            ctx.lineTo(175,25);
-            ctx.stroke();
-        ctx.beginPath(); //horizontal bar short piece
-            ctx.moveTo(49,40);
-            ctx.lineTo(86,40);
-            ctx.stroke();
-        ctx.beginPath(); //horizontal bar long piece
-            ctx.moveTo(106,40);
-            ctx.lineTo(175,40);
-            ctx.stroke();
-        ctx.beginPath(); //small vertical bar
-            ctx.moveTo(173,25);
-            ctx.lineTo(173,40);
-            ctx.stroke();
-        ctx.beginPath(); //cross bar
-            ctx.moveTo(50,80);
-            ctx.lineTo(100,25);
-            ctx.stroke();
-        ctx.beginPath(); //cross bar
-            ctx.moveTo(60,90);
-            ctx.lineTo(111,35);
-            ctx.stroke();
-        ctx.beginPath(); //cross bar
-            ctx.moveTo(50,80);
-            ctx.lineTo(60,90);
-            ctx.stroke();
-        ctx.beginPath(); //cross bar
-            ctx.moveTo(100,25);
-            ctx.lineTo(111,35);
-            ctx.stroke();
-        ctx.beginPath(); //ground
-            ctx.moveTo(35,270);
-            ctx.lineTo(265,270);
-            ctx.stroke();
-        ctx.beginPath(); //noose
-            ctx.moveTo(150,40);
-            ctx.lineTo(150,80);
-            ctx.stroke();
-}
+    }
 
     disableButton = (event) => {
         console.log(event)
