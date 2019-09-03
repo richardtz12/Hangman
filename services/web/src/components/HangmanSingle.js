@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 
-var url="http://0.0.0.0:5000/hangman/get_word"
+var url="http://localhost:5000/hangman/get_word"
 
 // this.setState({ refresh: true }, () => {
 //   axios.get(url, { params })
@@ -136,7 +136,7 @@ export default class HangmanSingle extends Component {
                             'status': 'win',
                          }
 
-            axios.get("http://0.0.0.0:5000/hangman/log_result", { params })
+            axios.get("http://localhost:5000/hangman/log_result", { params })
                  .then((res) => {
                         console.log(res.data.status);
                   });
@@ -207,7 +207,7 @@ export default class HangmanSingle extends Component {
                                 'status': 'lost',
                              }
 
-                axios.get("http://0.0.0.0:5000/hangman/log_result", { params })
+                axios.get("http://localhost:5000/hangman/log_result", { params })
                      .then((res) => {
                             console.log(res.data.status);
                       });

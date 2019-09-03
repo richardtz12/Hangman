@@ -16,7 +16,7 @@ export default class ScoreBoard extends Component {
 
     // Helper function that populates the table
     populateTable = () => {
-        axios.get("http://0.0.0.0:5000/hangman/get_scoreboard", {})
+        axios.get("http://localhost:5000/hangman/get_scoreboard", {})
              .then((res) => {
                  return (
                      Object.keys(res.data.values).map((item) => (
