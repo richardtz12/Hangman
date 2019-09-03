@@ -45,6 +45,27 @@ def check_letter():
                     'indices': accepted_indices,
                   })
 
+@hangman_mod.route('/log_result')
+def log_result():
+    try:
+        name = request.args.get('playerName')
+        status = request.args.get('status')
+
+        if (status is 'win'):
+            print ("Player Won")
+        elif (status is 'lost'):
+            print ("Player Lost")
+
+        return jsonify({'status': "OK"})
+    except Exception as e:
+        return jsonify({
+                        'description': e,
+                        'status': 'error',
+                       })
+
+
+
+
 # # Functions that keep score
 # score_1 = 0
 # score_2 = 0
