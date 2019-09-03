@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Row, Container, Col, Button } from 'reactstrap';
+import { Row, Container, Col, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
 import PropTypes from 'prop-types';
 
 import './App.css';
 
-import SingleName from './components/SingleName';
 import HangmanSingle from './components/HangmanSingle';
 
 export default class App extends Component {
@@ -14,8 +13,9 @@ export default class App extends Component {
         super();
 
         this.state = {
-            isSinglePlayer: false,
             isLogin: true,
+            isSinglePlayer: false,
+            isHangmanSingle: false,
             playerOne: '',
             platerTwo: '',
         }
@@ -30,7 +30,6 @@ export default class App extends Component {
                         <Button color="primary" size="lg" onClick={this.singlePlayer}> Single Player </Button>
                     </div>
                 </Row>
-
                 <Row>
                     <div className='button-align'>
                         <Button color="primary" size="lg"> Multi Player </Button>
@@ -40,32 +39,65 @@ export default class App extends Component {
         );
     }
 
+
     // Single Player
     singlePlayer = () => {
         this.setState({
                         isSinglePlayer: true,
                         isLogin: false,
+                        isHangmanSingle: false,
                      });
+    }
+
+    // Populates Code for Single Player
+    populateSinglePlayer = () => {
+        return (
+            <div className='form-center'>
+               <Form>
+                   <FormGroup>
+                       <Label for="player_one"> Player 1 </Label>
+                       <Input name="player_one" id="player_one" placeholder="Enter Name"/>
+                   </FormGroup>
+
+                   <Button onClick={this.hangmanSingle}> Submit </Button>
+               </Form>
+             </div>
+        );
+    }
+
+    hangmanSingle = () => {
+        this.setState({
+                        isSinglePlayer: false,
+                        isLogin: false,
+                        isHangmanSingle: true,
+                     })
     }
 
     render() {
         return (
-          <Container>
-              <HangmanSingle/> 
-              <Row>
-                  <div className='header'>
-                      <h1> Hangman App</h1>
-                  </div>
-              </Row>
+          <div className='center'>
+              <Container>
+                  <Row>
+                      <div className='header'>
+                          <h1> Hangman App</h1>
+                      </div>
+                  </Row>
 
-              {/* { this.state.isLogin ? this.loginPage() : '' } */}
+                  <Row>
+                    <div class='login-center'>
+                        { this.state.isLogin ? this.loginPage() : '' }
+                    </div>
+                  </Row>
 
-              <Row>
-                 {/* { this.state.isSinglePlayer ? <SingleName /> : '' } */}
-              </Row>
+                  <Row>
+                    { this.state.isSinglePlayer ? this.populateSinglePlayer() : '' }
+                  </Row>
 
-
-          </Container>
+                  <Row>
+                    { this.state.isHangmanSingle ? <HangmanSingle /> : ''}
+                  </Row>
+             </Container>
+          </div>
         );
     }
 }

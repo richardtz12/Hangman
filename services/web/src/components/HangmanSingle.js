@@ -36,7 +36,7 @@ export default class HangmanSingle extends Component {
         for (var i = 1; i < x + 1; i++) {
             document.getElementById('letter'+ i).innerHTML = word[i - 1];
             document.getElementById('letter'+ i).style.visibility = "hidden";
-            document.getElementById('underline'+i).style.display = "block";            
+            document.getElementById('underline'+i).style.display = "block";
             document.getElementById('underline'+i).style.borderBottom = "3px solid black";
         }
         var ctx = document.getElementById("hangMan").getContext('2d');
@@ -177,12 +177,11 @@ export default class HangmanSingle extends Component {
     render() {
         return (
             <Container>
-                // Hangman Icon
                 <Row>
 
                 </Row>
-                // Letters
                 <Row>
+
                 </Row>
                 <canvas id="hangMan" width="300px" height="300px"></canvas>
                 <Row>
