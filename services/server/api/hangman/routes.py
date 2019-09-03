@@ -4,6 +4,9 @@ import random
 
 hangman_mod = Blueprint('hangman', __name__)
 
+# from firebase import firebase
+# firebase = firebase.FirebaseApplication()
+
 
 chosen_word = ''
 # Finds a random word from the dictionary
@@ -62,24 +65,6 @@ def log_result():
                         'description': e,
                         'status': 'error',
                        })
-
-
-
-
-# # Functions that keep score
-# score_1 = 0
-# score_2 = 0
-# @hangman_mod.route('/init')
-# def init_score():
-#     global score_1
-#     global score_2
-#
-#     score_1 = 0
-#     score_2 = 0
-#
-
-
-
 
 
 # https://github.com/dwyl/english-words/blob/master/read_english_dictionary.py

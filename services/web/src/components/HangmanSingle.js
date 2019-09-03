@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Container, Col, Button, ButtonGroup } from 'reactstrap';
 
-// import '../css/HangmanSingle.css';
+import '../App.css';
 
 // Used for Get Requests from Server
 import axios from 'axios';
@@ -304,11 +304,9 @@ export default class HangmanSingle extends Component {
                         </div>
                     </div>
                 </Row>
-
                 <br />
                 <br />
                 <br />
-
                 <Row>
                     <div id="gamePage">
                         <p id="categoryName"></p>
@@ -318,7 +316,6 @@ export default class HangmanSingle extends Component {
                         </div>
                     </div>
                 </Row>
-
             </Container>
         );
     }
