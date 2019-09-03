@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 
 import random
 
+
 hangman_mod = Blueprint('hangman', __name__)
 
 # from firebase import firebase
@@ -48,16 +49,41 @@ def check_letter():
                     'indices': accepted_indices,
                   })
 
+
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
+
+cred = credentials.Certificate('cred.json')
+firebase_admin.initialize_app(cred, {
+    'databaseURL': 'https://hangman-68783.firebaseio.com/'
+})
+
+ref = db.reference('/')
+
 @hangman_mod.route('/log_result')
 def log_result():
     try:
         name = request.args.get('playerName')
-        status = request.args.get('status')
+        status = str(request.args.get('status'))
 
-        if (status is 'win'):
-            print ("Player Won")
-        elif (status is 'lost'):
-            print ("Player Lost")
+        win_count = 0
+        loss_count = 0
+
+        if (status == 'win'):
+            win_count += 1
+        elif (status == 'lost'):
+            loss_count += 1
+
+        ref.update({
+                'stats':
+                    {
+                      name: {
+                              'win_count': win_count,
+                              'loss_count': loss_count,
+                            }
+                    }
+                })
 
         return jsonify({'status': "OK"})
     except Exception as e:

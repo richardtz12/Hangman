@@ -77,7 +77,7 @@ export default class App extends Component {
 
                <br />
                <br />
-               
+
                { this.populateBackButton() }
 
            </Form>
@@ -131,7 +131,7 @@ export default class App extends Component {
 
     render() {
         return (
-          <div className='centered' id='centerId'>
+          <div className='centered'>
               <Container>
                   <Row>
                     <Col>
@@ -164,6 +164,7 @@ export default class App extends Component {
                     { this.state.isScoreBoard ? this.populateBackButton() : ''}
                   </Row>
              </Container>
+
           </div>
         );
     }

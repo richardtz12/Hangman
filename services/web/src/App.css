@@ -37,10 +37,7 @@
     align: center;
 }
 
-.center {
-    margin-left: auto;
-    margin-right: auto;
-}
+
 
 .centered {
   height: 100vh; /* Magic here */
