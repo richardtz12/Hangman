@@ -13,6 +13,7 @@ export default class HangmanSingle extends Component {
         super();
 
         this.state = {
+            lettersVisible: false,
         };
     }
 
@@ -32,6 +33,9 @@ export default class HangmanSingle extends Component {
 
 
     renderHangman = () =>  {
+        this.setState({
+                        lettersVisible: true,
+                      })
         var x = word.length;
         for (var i = 1; i < x + 1; i++) {
             document.getElementById('letter'+ i).innerHTML = word[i - 1];
@@ -172,121 +176,125 @@ export default class HangmanSingle extends Component {
         }
     }
 
+    populateLetters = () => {
+        return (
+            <Container>
+                <Button id="a" onClick= {this.disableButton} value = {"a"}>a</Button>
+                <Button id="b" onClick= {this.disableButton} value = {"b"}>b</Button>
+                <Button id="c" onClick= {this.disableButton} value = {"c"}>c</Button>
+                <Button id="d" onClick= {this.disableButton} value = {"d"}>d</Button>
+                <Button id="e" onClick= {this.disableButton} value = {"e"}>e</Button>
+                <Button id="f" onClick= {this.disableButton} value = {"f"}>f</Button>
+                <Button id="g" onClick= {this.disableButton} value = {"g"}>g</Button>
+                <Button id="h" onClick= {this.disableButton} value = {"h"}>h</Button>
+                <Button id="i" onClick= {this.disableButton} value = {"i"}>i</Button>
+                <Button id="j" onClick= {this.disableButton} value = {"j"}>j</Button>
+                <Button id="k" onClick= {this.disableButton} value = {"k"}>k</Button>
+                <Button id="l" onClick= {this.disableButton} value = {"l"}>l</Button>
+                <Button id="m" onClick= {this.disableButton} value = {"m"}>m</Button>
+                <Button id="n" onClick= {this.disableButton} value = {"n"}>n</Button>
+                <Button id="o" onClick= {this.disableButton} value = {"o"}>o</Button>
+                <Button id="p" onClick= {this.disableButton} value = {"p"}>p</Button>
+                <Button id="q" onClick= {this.disableButton} value = {"q"}>q</Button>
+                <Button id="r" onClick= {this.disableButton} value = {"r"}>r</Button>
+                <Button id="s" onClick= {this.disableButton} value = {"s"}>s</Button>
+                <Button id="t" onClick= {this.disableButton} value = {"t"}>t</Button>
+                <Button id="u" onClick= {this.disableButton} value = {"u"}>u</Button>
+                <Button id="v" onClick= {this.disableButton} value = {"v"}>v</Button>
+                <Button id="w" onClick= {this.disableButton} value = {"w"}>w</Button>
+                <Button id="x" onClick= {this.disableButton} value = {"x"}>x</Button>
+                <Button id="y" onClick= {this.disableButton} value = {"y"}>y</Button>
+                <Button id="z" onClick= {this.disableButton} value = {"z"}>z</Button>
+            </Container>
+        );
+    }
+
 
 
     render() {
         return (
             <Container>
                 <Row>
-
                 </Row>
+
                 <Row>
-
                 </Row>
+
                 <canvas id="hangMan" width="300px" height="300px"></canvas>
+
                 <Row>
-                <div id="wordWrap1">
-            <div id="underline1">
-                <div id="letter1"></div>
-            </div>
-            <div id="underline2">
-                <div id="letter2"></div>
-            </div>
-            <div id="underline3">
-                <div id="letter3"></div>
-            </div>
-            <div id="underline4">
-                <div id="letter4"></div>
-            </div>
-            <div id="underline5">
-                <div id="letter5"></div>
-            </div>
-            <div id="underline6">
-                <div id="letter6"></div>
-            </div>
-            <div id="underline7">
-                <div id="letter7"></div>
-            </div>
-            <div id="underline8">
-                <div id="letter8"></div>
-            </div>
-            <div id="underline9">
-                <div id="letter9"></div>
-            </div>
-            <div id="underline10">
-                <div id="letter10"></div>
-            </div>
-            <div id="underline11">
-                <div id="letter11"></div>
-            </div>
-            <div id="underline12">
-                <div id="letter12"></div>
-            </div>
-            <div id="underline13">
-                <div id="letter13"></div>
-            </div>
-            <div id="underline14">
-                <div id="letter14"></div>
-            </div>
-            <div id="underline15">
-                <div id="letter15"></div>
-            </div>
-            <div id="underline16">
-                <div id="letter16"></div>
-            </div>
-            <div id="underline17">
-                <div id="letter17"></div>
-            </div>
-            <div id="underline18">
-                <div id="letter18"></div>
-            </div>
-            <div id="underline19">
-                <div id="letter19"></div>
-            </div>
-            <div id="underline20">
-                <div id="letter20"></div>
-            </div>
-        </div>
+                    <div id="wordWrap1">
+                        <div id="underline1">
+                            <div id="letter1"></div>
+                        </div>
+                        <div id="underline2">
+                            <div id="letter2"></div>
+                        </div>
+                        <div id="underline3">
+                            <div id="letter3"></div>
+                        </div>
+                        <div id="underline4">
+                            <div id="letter4"></div>
+                        </div>
+                        <div id="underline5">
+                            <div id="letter5"></div>
+                        </div>
+                        <div id="underline6">
+                            <div id="letter6"></div>
+                        </div>
+                        <div id="underline7">
+                            <div id="letter7"></div>
+                        </div>
+                        <div id="underline8">
+                            <div id="letter8"></div>
+                        </div>
+                        <div id="underline9">
+                            <div id="letter9"></div>
+                        </div>
+                        <div id="underline10">
+                            <div id="letter10"></div>
+                        </div>
+                        <div id="underline11">
+                            <div id="letter11"></div>
+                        </div>
+                        <div id="underline12">
+                            <div id="letter12"></div>
+                        </div>
+                        <div id="underline13">
+                            <div id="letter13"></div>
+                        </div>
+                        <div id="underline14">
+                            <div id="letter14"></div>
+                        </div>
+                        <div id="underline15">
+                            <div id="letter15"></div>
+                        </div>
+                        <div id="underline16">
+                            <div id="letter16"></div>
+                        </div>
+                        <div id="underline17">
+                            <div id="letter17"></div>
+                        </div>
+                        <div id="underline18">
+                            <div id="letter18"></div>
+                        </div>
+                        <div id="underline19">
+                            <div id="letter19"></div>
+                        </div>
+                        <div id="underline20">
+                            <div id="letter20"></div>
+                        </div>
+                    </div>
                 </Row>
+
                 <Row>
                     <div id="gamePage">
-                    <p id="categoryName"></p>
-                    <div id="wordWrap">
-                    {/* OnClick = {this.renderHangman} */}
-                            <button id="Start" onClick = {this.renderHangman} >Start</button>
-                            <button id="a" onClick= {this.disableButton} value = {"a"}>a</button>
-                            <button id="b" onClick= {this.disableButton} value = {"b"}>b</button>
-                            <button id="c" onClick= {this.disableButton} value = {"c"}>c</button>
-                            <button id="d" onClick= {this.disableButton} value = {"d"}>d</button>
-                            <button id="e" onClick= {this.disableButton} value = {"e"}>e</button>
-                            <button id="f" onClick= {this.disableButton} value = {"f"}>f</button>
-                            <button id="g" onClick= {this.disableButton} value = {"g"}>g</button>
-                            <button id="h" onClick= {this.disableButton} value = {"h"}>h</button>
-                            <button id="i" onClick= {this.disableButton} value = {"i"}>i</button>
-                            <button id="j" onClick= {this.disableButton} value = {"j"}>j</button>
-                            <button id="k" onClick= {this.disableButton} value = {"k"}>k</button>
-                            <button id="l" onClick= {this.disableButton} value = {"l"}>l</button>
-                            <button id="m" onClick= {this.disableButton} value = {"m"}>m</button>
-                            <button id="n" onClick= {this.disableButton} value = {"n"}>n</button>
-                            <button id="o" onClick= {this.disableButton} value = {"o"}>o</button>
-                            <button id="p" onClick= {this.disableButton} value = {"p"}>p</button>
-                            <button id="q" onClick= {this.disableButton} value = {"q"}>q</button>
-                            <button id="r" onClick= {this.disableButton} value = {"r"}>r</button>
-                            <button id="s" onClick= {this.disableButton} value = {"s"}>s</button>
-                            <button id="t" onClick= {this.disableButton} value = {"t"}>t</button>
-                            <button id="u" onClick= {this.disableButton} value = {"u"}>u</button>
-                            <button id="v" onClick= {this.disableButton} value = {"v"}>v</button>
-                            <button id="w" onClick= {this.disableButton} value = {"w"}>w</button>
-                            <button id="x" onClick= {this.disableButton} value = {"x"}>x</button>
-                            <button id="y" onClick= {this.disableButton} value = {"y"}>y</button>
-                            <button id="z" onClick= {this.disableButton} value = {"z"}>z</button>
+                        <p id="categoryName"></p>
+                        <div id="wordWrap">
 
-
+                            {this.state.lettersVisible ? this.populateLetters() : <Button id="Start" onClick = {this.renderHangman} >Start</Button>}
+                        </div>
                     </div>
-                    </div>
-                    <ButtonGroup>
-                        {/* {this.populateLetters()} */}
-                    </ButtonGroup>
                 </Row>
 
             </Container>
