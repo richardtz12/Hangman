@@ -75,7 +75,7 @@ def log_result():
         elif (status == 'lost'):
             loss_count += 1
 
-        ref.update({
+        ref.set({
                 'stats':
                     {
                       name: {
@@ -91,6 +91,18 @@ def log_result():
                         'description': e,
                         'status': 'error',
                        })
+
+
+@hangman_mod.route('/get_scoreboard')
+def get_scoreboard():
+    try:
+        ref_read = db.reference('stats')
+        return jsonify({
+                        'values': ref_read.get(),
+                        'status': 'OK',
+                       })
+    except Exception as e:
+        return jsonify({'status': "ERROR" })
 
 
 # https://github.com/dwyl/english-words/blob/master/read_english_dictionary.py
