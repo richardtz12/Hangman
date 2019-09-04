@@ -18,15 +18,33 @@ export default class ScoreBoard extends Component {
     populateTable = () => {
         axios.get("http://localhost:5000/hangman/get_scoreboard", {})
              .then((res) => {
-                 return (
-                     Object.keys(res.data.values).map((item) => (
-                         <tr>
-                             <td> { item } </td>
-                             <td> { item.win_count } </td>
-                             <td> { item.loss_count } </td>
-                         </tr>
-                     ))
-                 );
+                 console.log(res.data.values)
+                 var keyList = Object.keys(res.data.values)
+                 var keyListLength = (Object.keys(res.data.values).length)
+                 var i = 0;
+                 for (i = 0; i < keyListLength; i++) {
+                    var user = keyList[i]
+                    var loss_count = (res.data.values[keyList[i]].loss_count)
+                    var win_count =  (res.data.values[keyList[i]].win_count)
+                    var table = document.getElementById("myTable");
+                    var row = table.insertRow(1);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    cell1.innerHTML = user;
+                    cell2.innerHTML = win_count;
+                    cell3.innerHTML = loss_count;
+                 }
+
+                //  return (
+                //      Object.keys(res.data.values).map((value) => (
+                //          <tr>
+                //              <td> { value } </td>
+                //              <td> { value.win_count } </td>
+                //              <td> { value.loss_count } </td>
+                //          </tr>
+                //      ))
+                //  );
               });
     }
 
@@ -37,7 +55,7 @@ export default class ScoreBoard extends Component {
                     <h2> Score Board </h2>
                 </Row>
                 <Row>
-                    <Table>
+                    <Table id = "myTable">
                         <thead>
                             <tr>
                                 <th> Player Name </th>
@@ -47,11 +65,6 @@ export default class ScoreBoard extends Component {
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td> Rahul </td>
-                                <td> 0 </td>
-                                <td> 0 </td>
-                            </tr>
                             { this.populateTable()}
                         </tbody>
                     </Table>
