@@ -131,6 +131,8 @@ export default class HangmanSingle extends Component {
         }
         if (numRight == this.state.wordArr.length) {
 
+            numRight = 0;
+            numWrong = 0;
             var params = {
                             'playerName': this.props.playerOne,
                             'status': 'win',
@@ -141,9 +143,8 @@ export default class HangmanSingle extends Component {
                         console.log(res.data.status);
                   });
 
+
             alert("Congratulations! You got the word!")
-
-
         }
         if (bool) {
             numWrong = numWrong + 1
@@ -202,6 +203,9 @@ export default class HangmanSingle extends Component {
                 ctx.lineTo(120,230);
                 ctx.stroke();
 
+                numRight = 0;
+                numWrong = 0;
+                
                 var params = {
                                 'playerName': this.props.playerOne,
                                 'status': 'lost',
