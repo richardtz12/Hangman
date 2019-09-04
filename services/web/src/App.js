@@ -18,12 +18,33 @@ export default class App extends Component {
             isSinglePlayer: false,
             isHangmanSingle: false,
             isScoreBoard: false,
+            inputValid: false,
             playerOne: '',
+
         }
     }
 
-    handleChange = event => {
-        this.setState({ playerOne: event.target.value })
+    handleChange = (event) => {
+
+        if (event.target.value !== null) {
+            if (event.target.value.length > 0) {
+                this.setState({
+                    inputValid: true,
+                })
+            } else {
+                this.setState({
+                    inputValid: false,
+                })
+            }
+        } else {
+            this.setState({
+                inputValid: false,
+            })
+        }
+
+        this.setState({
+                        playerOne: event.target.value,
+                     })
     };
 
     // Basic Buttons for Login Page
@@ -72,7 +93,9 @@ export default class App extends Component {
                     />
                </FormGroup>
 
-               <Button onClick={this.hangmanSingle}> Submit </Button>
+
+               { this.state.inputValid ? <Button onClick={this.hangmanSingle}> Submit </Button> : <Button disabled onClick={this.hangmanSingle}> Submit </Button> }
+
 
                <br />
                <br />
@@ -94,7 +117,7 @@ export default class App extends Component {
 
     populateIntroSingle = () => {
         return (
-                <h2> Welcome to Hangman {this.state.playerOne} ! </h2>
+                <h2> Welcome to Hangman {this.state.playerOne}! </h2>
         );
     }
 

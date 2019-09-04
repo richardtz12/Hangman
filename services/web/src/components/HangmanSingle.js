@@ -28,6 +28,7 @@ export default class HangmanSingle extends Component {
 
     static propTypes = {
         playerOne: PropTypes.string.isRequired,
+        word: PropTypes.string.isRequired,
     };
 
     constructor(props) {
@@ -216,7 +217,7 @@ export default class HangmanSingle extends Component {
                             console.log(res.data.status);
                       });
 
-                alert("You have Lost! Try again next time!")
+                alert("You have Lost! The word was " + this.state.word + ". Try again next time!")
         }
     }
 
