@@ -205,7 +205,7 @@ export default class HangmanSingle extends Component {
 
                 numRight = 0;
                 numWrong = 0;
-                
+
                 var params = {
                                 'playerName': this.props.playerOne,
                                 'status': 'lost',
