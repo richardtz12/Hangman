@@ -36,15 +36,15 @@ export default class ScoreBoard extends Component {
                     cell3.innerHTML = loss_count;
                  }
 
-                 return (
-                     Object.keys(res.data.values).map((value) => (
-                         <tr>
-                             <td> { value } </td>
-                             <td> { value.win_count } </td>
-                             <td> { value.loss_count } </td>
-                         </tr>
-                     ))
-                 );
+                //  return (
+                //      Object.keys(res.data.values).map((value) => (
+                //          <tr>
+                //              <td> { value } </td>
+                //              <td> { value.win_count } </td>
+                //              <td> { value.loss_count } </td>
+                //          </tr>
+                //      ))
+                //  );
               });
     }
 
