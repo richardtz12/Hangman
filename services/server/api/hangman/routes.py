@@ -59,7 +59,7 @@ firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://hangman-68783.firebaseio.com/'
 })
 
-ref = db.reference('/')
+ref = db.reference('/stats')
 
 @hangman_mod.route('/log_result')
 def log_result():
@@ -67,22 +67,26 @@ def log_result():
         name = request.args.get('playerName')
         status = str(request.args.get('status'))
 
-        win_count = 0
-        loss_count = 0
+        try:
+            json_vals = ref.get()
+
+            win_count = int(json_vals[name]['win_count'])
+            loss_count = int(json_vals[name]['loss_count'])
+        except:
+            win_count = 0
+            loss_count = 0
 
         if (status == 'win'):
             win_count += 1
         elif (status == 'lost'):
             loss_count += 1
 
-        ref.set({
-                'stats':
-                    {
+
+        ref.update({
                       name: {
                               'win_count': win_count,
                               'loss_count': loss_count,
                             }
-                    }
                 })
 
         return jsonify({'status': "OK"})
@@ -96,7 +100,7 @@ def log_result():
 @hangman_mod.route('/get_scoreboard')
 def get_scoreboard():
     try:
-        ref_read = db.reference('stats')
+        ref_read = db.reference('/stats')
         return jsonify({
                         'values': ref_read.get(),
                         'status': 'OK',
