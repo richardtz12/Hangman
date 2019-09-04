@@ -65,6 +65,7 @@ ref = db.reference('/stats')
 def log_result():
     try:
         name = request.args.get('playerName')
+        name = name.lower()
         status = str(request.args.get('status'))
 
         try:
