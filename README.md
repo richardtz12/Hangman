@@ -24,9 +24,10 @@ is run.
 
     4. Allow all modules to download, and simply type in either
 
-                `python3 ./services/server/main.py`
+                `python main.py`
                         or
-                `python ./services/server/main.py`
+                `python3 main.py`
+
 
         This will boot the server and make it accessible to the localhost (http://localhost:5000) (This should be by default)
 
@@ -42,9 +43,11 @@ The following instructions highlight how to run the expo app.
 
             - Instructions on YARN installation: https://yarnpkg.com/lang/en/docs/install/#mac-stable
 
-    3. Give the app a couple of minutes to load, and it should pop up in the localhost:3000 position.
+    3. Type in `yarn start` to run the app
 
-    4. Get ready to play!
+    4. Give the app a couple of minutes to load, and it should pop up in the localhost:3000 position.
+
+    5. Get ready to play!
 
 
 Developed By:
